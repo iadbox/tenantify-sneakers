@@ -1,6 +1,6 @@
 # Tenantify::Sneakers
 
-This gem provides a client and a server middlewares for Sneakers to work with the tenantify gem
+Gem to make Sneakers work with the Tenantify gem.
 
 ## Installation
 
@@ -15,6 +15,30 @@ And then execute:
     $ bundle
 
 ## Usage
+
+This gem provides a `Tenantify::Sneakers::Worker` module to be used instead
+of `Sneakers::Worker`, that executes the `#work` (or `#work_with_params`) method
+in the context of a particular tenant.
+
+The tenant name must be stored in the `:tenant` header of the message metadata.
+
+To create a tenantified Sneakers worker:
+
+```ruby
+class Worker
+  prepend Tenantify::Sneakers::Worker
+
+  def work msg
+    # do work...
+  end
+end
+```
+
+*IMPORTANT:* For the gem to work you must *prepend* the `Tenantify::Sneakers::Worker`
+on the class where you are defining the `#work` or `#work_with_params` method.
+If you prepend the `Tenantify::Sneakers::Worker` to a class and then you inherit from
+that class and define the `#work` method on the child class, the gem is not going to
+work.
 
 ## Contributing
 

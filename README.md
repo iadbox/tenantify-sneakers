@@ -25,6 +25,8 @@ The tenant name must be stored in the `:tenant` header of the message metadata.
 To create a tenantified Sneakers worker:
 
 ```ruby
+require 'tenantify/sneakers'
+
 class Worker
   prepend Tenantify::Sneakers::Worker
 

@@ -10,7 +10,7 @@ module Tenantify
       end
 
       def work_with_params msg, delivery_info, metadata
-        tenant = metadata.headers.fetch(:tenant)
+        tenant = metadata.headers.fetch 'tenant'
 
         Tenantify.using tenant do
           if defined?(super)

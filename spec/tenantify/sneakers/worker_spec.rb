@@ -23,8 +23,7 @@ RSpec.describe Tenantify::Sneakers::Worker do
 
   let(:message)       { "the message" }
   let(:delivery_info) { double 'delivery_info' }
-  let(:metadata)      { {:tenant => "the_tenant"} }
-  let(:handler)       { double 'handler', :acknowledge => nil }
+  let(:metadata)      { double 'metadata', :headers => {:tenant => "the_tenant"} }
 
   describe '#work' do
     it 'properly sets the tenant' do

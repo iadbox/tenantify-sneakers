@@ -1,6 +1,6 @@
 # Tenantify::Sneakers
 
-Gem to make Sneakers work with the Tenantify gem.
+Gem to make [Sneakers](https://github.com/jondot/sneakers) work with the [Tenantify](https://github.com/qustodian/tenantify) gem.
 
 ## Installation
 
